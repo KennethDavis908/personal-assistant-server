@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "task")
@@ -28,4 +29,7 @@ public class Task {
 
     @Column(name = "complete", nullable = false)
     private boolean complete;
+
+    @Column(name = "to_do_list_id")
+    private int toDoListId;
 }

@@ -31,7 +31,7 @@ public class ToDoList {
     @CreationTimestamp
     private LocalDate createdOn;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "to_do_list_id")
     private List<Task> tasks;
 }
