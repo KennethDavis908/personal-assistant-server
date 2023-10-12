@@ -28,10 +28,13 @@ public class ToDoList {
     private int id;
 
     @Column(name = "created_on")
-    @CreationTimestamp
     private LocalDate createdOn;
 
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "to_do_list_id")
     private List<Task> tasks;
+
+    public ToDoList(LocalDate createdOn) {
+        this.createdOn = createdOn;
+    }
 }
