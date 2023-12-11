@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class ToDoList {
 
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "to_do_list_id")
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<Task>();
 
     public ToDoList(LocalDate createdOn) {
         this.createdOn = createdOn;

@@ -3,10 +3,7 @@ package com.davis.task;
 import com.davis.models.Task;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/task")
@@ -17,7 +14,7 @@ public class TaskController {
     public TaskController(TaskService taskService) {this.taskService = taskService;}
 
     @PutMapping
-    public ResponseEntity<Task> upsetTask(@RequestBody Task task) {
+    public ResponseEntity<Task> upsertTask(@RequestBody Task task) {
         Task upsertedTask = taskService.upsert(task);
 
         HttpStatus status;
