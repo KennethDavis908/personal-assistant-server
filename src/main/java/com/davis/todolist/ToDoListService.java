@@ -20,4 +20,8 @@ public class ToDoListService {
         if(toDoList.isPresent()) return toDoList.get();
         return toDoListRepository.save(new ToDoList(date));
     }
+
+    public ToDoList findById(int id) {
+        return toDoListRepository.findById(id).orElseThrow(() -> new RuntimeException());
+    }
 }
