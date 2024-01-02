@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface ToDoListRepository extends JpaRepository<ToDoList, Integer> {
-    Optional<ToDoList> findByCreatedOn(LocalDate date);
+    Optional<ToDoList> findByCreatedOnAndUserId(LocalDate date, String userId);
 }
