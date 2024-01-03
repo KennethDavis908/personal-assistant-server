@@ -1,5 +1,6 @@
 package com.davis.todolist;
 
+import com.davis.exceptions.ToDoListIdNotFoundException;
 import com.davis.models.ToDoList;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +23,6 @@ public class ToDoListService {
     }
 
     public ToDoList findById(int id) {
-        return toDoListRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return toDoListRepository.findById(id).orElseThrow(() -> new ToDoListIdNotFoundException(id));
     }
 }

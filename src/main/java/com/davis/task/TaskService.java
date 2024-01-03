@@ -1,5 +1,6 @@
 package com.davis.task;
 
+import com.davis.exceptions.AccessToDoListDeniedException;
 import com.davis.models.Task;
 import com.davis.models.ToDoList;
 import com.davis.todolist.ToDoListService;
@@ -19,7 +20,7 @@ public class TaskService {
 
     public Task upsert(Task task) {
         ToDoList toDoList = this.toDoListService.findById(task.getToDoListId());
-        if(!toDoList.getUserId().equals(SecurityContextHolder.getContext().getAuthentication().getName())) throw new RuntimeException();
+        if(!toDoList.getUserId().equals(SecurityContextHolder.getContext().getAuthentication().getName())) throw new AccessToDoListDeniedException(task.getToDoListId());
         return taskRepository.save(task);
     }
 }
