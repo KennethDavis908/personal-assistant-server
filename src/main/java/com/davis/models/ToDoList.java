@@ -1,10 +1,11 @@
 package com.davis.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,7 +36,12 @@ public class ToDoList {
     @JoinColumn(name = "to_do_list_id")
     private List<Task> tasks = new ArrayList<Task>();
 
+    @JsonIgnore
+    @Column(name = "user_id")
+    private String userId;
+
     public ToDoList(LocalDate createdOn) {
         this.createdOn = createdOn;
+        this.userId = SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }
