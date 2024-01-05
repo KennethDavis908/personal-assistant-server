@@ -18,8 +18,8 @@ public class ToDoListController {
     public ToDoListController(ToDoListService toDoListService) {this.toDoListService = toDoListService;}
 
     @GetMapping("{date}")
-    public ResponseEntity<ToDoList> getByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-        ToDoList toDoList = toDoListService.getByDate(date);
+    public ResponseEntity<ToDoList> findByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        ToDoList toDoList = toDoListService.findByDate(date);
         return ResponseEntity.ok(toDoList);
     }
 }
