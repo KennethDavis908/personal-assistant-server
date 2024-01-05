@@ -16,7 +16,7 @@ public class ToDoListService {
 
     public ToDoListService(ToDoListRepository toDoListRepository) {this.toDoListRepository = toDoListRepository;}
 
-    public ToDoList getByDate(LocalDate date) {
+    public ToDoList findByDate(LocalDate date) {
         Optional<ToDoList> toDoList = toDoListRepository.findByCreatedOnAndUserId(date, SecurityContextHolder.getContext().getAuthentication().getName());
         if(toDoList.isPresent()) return toDoList.get();
         return toDoListRepository.save(new ToDoList(date));

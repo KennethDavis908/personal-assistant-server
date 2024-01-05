@@ -1,6 +1,7 @@
 package com.davis.advice;
 
 import com.davis.exceptions.AccessToDoListDeniedException;
+import com.davis.exceptions.AccessToNoteDeniedException;
 import com.davis.exceptions.ToDoListIdNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -20,5 +21,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AccessToDoListDeniedException.class)
     public ResponseEntity<Object> handleAccessToDoListDeniedException(HttpServletRequest request, AccessToDoListDeniedException accessToDoListDeniedException) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access To To Do List Denied");
+    }
+
+    @ExceptionHandler(AccessToNoteDeniedException.class)
+    public ResponseEntity<Object> handleAccessToNoteDeniedException(HttpServletRequest request, AccessToNoteDeniedException accessToNoteDeniedException) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access To Note Denied");
     }
 }
